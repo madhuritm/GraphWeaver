@@ -8,9 +8,9 @@
             "program": "neo4j_ingestor.py",
             "console": "integratedTerminal",
             "args":[
-                "--uri", "neo4j+s://ac2046db.databases.neo4j.io",
-                "--password", "APfbBQoc1M9ssLjqu4N7tQI3p6eWlUemkXhaN-md-Nc",
-                "--user", "neo4j",
+                "--uri", "",
+                "--password", "",
+                "--user", "",
                 "--triples", "../out/triples_output/triples.json",
                 "--maingraphnode", "Graph_weaver"
             ]
