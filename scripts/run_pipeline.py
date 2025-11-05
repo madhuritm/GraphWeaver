@@ -25,9 +25,6 @@ def main():
     run(["python", "scripts/pdf_parser.py", "--pdf", args.pdf, "--doc-id", str(args.doc_id), "--out", str(chunks), "--max-tokens", str(args.max_tokens)])
     run(["python", "scripts/NER.py", "--chunks", str(chunks), "--out", str(ner), "--labels_registry", str(labels_registry), "--new_labels_out", str(new_labels)])
     run(["python", "scripts/triples_gen.py", "--chunks", str(chunks), "--ner", str(ner), "--out", str(triples)])
-    print(os.getenv("NEO4J_URI"))
-    print(os.getenv("NEO4J_USER"))
-    print(os.getenv("NEO4J_PASS"))
     run([
         "python", "scripts/neo4j_ingestor.py",
         "--uri", os.getenv("NEO4J_URI"),
