@@ -1,0 +1,77 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "neo4j_ingestor.py",
+            "console": "integratedTerminal",
+            "args":[
+                "--uri", "neo4j+s://ac2046db.databases.neo4j.io",
+                "--password", "APfbBQoc1M9ssLjqu4N7tQI3p6eWlUemkXhaN-md-Nc",
+                "--user", "neo4j",
+                "--triples", "../out/triples_output/triples.json",
+                "--maingraphnode", "Graph_weaver"
+            ]
+            "env": {
+                "OPENAI_API_KEY": "${env:OPENAI_API_KEY}"
+            }
+        },
+        {
+            "name": "Python Debugger: Current File with Arguments",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "triples_gen.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--chunks",
+                "../out/pdf_parser_output/output_02.chunks.json",
+                "--ner",
+                "../out/NER_output/ner.json",
+                "--out",
+                "../out/triples_output/triples.json"
+            ]
+            "env": {
+                "OPENAI_API_KEY": "${env:OPENAI_API_KEY}"
+            }
+        },
+        {
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "NER.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--chunks",
+                "../out/pdf_parser_output/output_02.chunks.json",
+                "--out",
+                "../out/NER_output/ner.json",
+                "--labels",
+                "../labels/labels_registry.json",
+                "--new_labels_out",
+                "../labels/new_labels_added.json"
+            ]
+            "env": {
+                "OPENAI_API_KEY": "${env:OPENAI_API_KEY}"
+            }
+        },
+        {
+            "name": "Python Debugger: Current File with Arguments",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "pdf_parser.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--pdf",
+                "../data/raw/heart_health_with_images.pdf",
+                "--doc-id",
+                "001",
+                "--max-tokens",
+                "1000",
+                "--out",
+                "output_03.chunks.json"
+            ]
+        }
+    ]
+}

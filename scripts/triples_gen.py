@@ -268,7 +268,7 @@ def main():
     with open(args.out, "w", encoding="utf-8") as f:
         json.dump(triples, f, indent=2, ensure_ascii=False)
 
-    print(f"✅ Extracted {len(triples)} triples → {args.out}")
+    print(f"Extracted {len(triples)} triples → {args.out}")
 
 if __name__ == "__main__":
     main()

@@ -305,13 +305,13 @@ def main():
     with open(args.new_labels_out, "w", encoding="utf-8") as f:
         json.dump(new_labels, f, indent=2, ensure_ascii=False)
 
-    print(f"✅ Wrote {len(ner_entities)} entities → {args.out}")
-    print(f"📚 Labels registry updated → {args.labels_registry}")
+    print(f"Wrote {len(ner_entities)} entities → {args.out}")
+    print(f"Labels registry updated → {args.labels_registry}")
     if new_labels:
-        print(f"🆕 New labels this run ({len(new_labels)}): {', '.join(new_labels)}")
-        print(f"📝 Also saved to → {args.new_labels_out}")
+        print(f"New labels this run ({len(new_labels)}): {', '.join(new_labels)}")
+        print(f"Also saved to → {args.new_labels_out}")
     else:
-        print("ℹ️ No new labels discovered this run.")
+        print("No new labels discovered this run.")
 
 if __name__ == "__main__":
     main()

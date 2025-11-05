@@ -102,7 +102,7 @@ def run_ingest(uri: str, user: str, password: str, triples_path: str, maingraphn
                     confidence=t.get("confidence"),
                 )
             tx.commit()
-    print("✅ Neo4j ingest complete.")
+    print("Neo4j ingest complete.")
 
 def main():
     ap = argparse.ArgumentParser()
