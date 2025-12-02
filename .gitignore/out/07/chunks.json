@@ -1,0 +1,52 @@
+[
+  {
+    "doc_id": "07",
+    "chunk_id": "da26de806bd84ceec81357fd206c451a461b5979",
+    "page": 1,
+    "text": "Annual Blood Report Patient Name Jane Doe DOB 1991 03 14 Collection Date October 26, 2025 Fasting Yes 8 hours Ordering Clinician Dr Priya Sharma Key Results Summary Test Result Units Reference Range Flag Hemoglobin 12.9 g dL 12.0 to 15.5 WBC 6.4 x10^3 uL 4.0 to 10.5 Platelets 245 x10^3 uL 150 to 450 Glucose Fasting 89 mg dL 70 to 99 HbA1c 5.4 % 4.0 to 5.6 Creatinine 0.82 mg dL 0.57 to 1.00 eGFR 102 mL min 1.73m2 >= 60 ALT 22 U L 0 to 32 AST 18 U L 0 to 40 Total Cholesterol 196 mg dL < 200 LDL Calculated 118 mg dL < 100 High HDL 56 mg dL > 50 Triglycerides 110 mg dL < 150 TSH 2.1 uIU mL 0.4 to 4.5 Interpretation note LDL is modestly elevated. Consider lifestyle modification.",
+    "char_start": 0,
+    "char_end": 682,
+    "n_tokens": 264,
+    "text_hash": "a81c74171bb7cadb1533cecbc817ba5389a13d14"
+  },
+  {
+    "doc_id": "07",
+    "chunk_id": "ec4c3866a8f9ff8f6718efe2a9ecfac1aa3c0b3a",
+    "page": 2,
+    "text": "Complete Blood Count with Differential Component Result Units Reference Range Flag WBC 6.4 x10^3 uL 4.0 to 10.5 RBC 4.45 x10^6 uL 3.80 to 5.10 Hemoglobin 12.9 g dL 12.0 to 15.5 Hematocrit 38.7 % 36.0 to 46.0 MCV 87.0 fL 80.0 to 100.0 MCH 29.0 pg 27.0 to 33.0 MCHC 33.3 g dL 32.0 to 36.0 RDW 12.9 % 11.5 to 14.5 Platelets 245 x10^3 uL 150 to 450 Neutrophils 56 % 40 to 74 Lymphocytes 34 % 19 to 48 Monocytes 6 % 3 to 11 Eosinophils 3 % 0 to 5 Basophils 1 % 0 to 2 Absolute Neutrophils 3.6 x10^3 uL 1.8 to 7.8 Absolute Lymphocytes 2.2 x10^3 uL 0.7 to 4.5 Absolute Monocytes 0.4 x10^3 uL 0.1 to 1.0 Absolute Eosinophils 0.2 x10^3 uL 0.0 to 0.5 Absolute Basophils 0.1 x10^3 uL 0.0 to 0.2",
+    "char_start": 0,
+    "char_end": 683,
+    "n_tokens": 346,
+    "text_hash": "b30448a1584147246bb37ab0145a71fc13222d9d"
+  },
+  {
+    "doc_id": "07",
+    "chunk_id": "554172d1ec7bc31ec98b8901efc539baf8b979e5",
+    "page": 3,
+    "text": "Comprehensive Metabolic Panel Analyte Result Units Reference Range Flag Glucose Fasting 89 mg dL 70 to 99 BUN 12 mg dL 6 to 20 Creatinine 0.82 mg dL 0.57 to 1.00 eGFR 102 mL min 1.73m2 >= 60 BUN Creatinine Ratio 15 9 to 20 Analyte Result Units Reference Range Flag Sodium 139 mmol L 134 to 144 Cholesterol Total 196 mg dL < 200 Potassium 4.3 mmol L 3.5 to 5.2 Triglycerides 110 mg dL < 150 Chloride 103 mmol L 96 to 106 HDL Cholesterol 56 mg dL > 50 CO2 24 mmol L 20 to 29 VLDL Calculated 22 mg dL 5 to 40 Calcium 9.4 mg dL 8.7 to 10.2 LDL Calculated 118 mg dL < 100 High Total Protein 7.0 g dL 6.0 to 8.5 Non HDL Cholesterol 140 mg dL < 130 High Lipid Panel Albumin 4.3 g dL 3.9 to 4.9 Chol HDL Ratio 3.5 < 5.0 Globulin 2.7 g dL 1.5 to 4.5 A G Ratio 1.6 1.2 to 2.2 Bilirubin Total 0.7 mg dL 0.1 to 1.2 Alkaline Phosphatase 66 U L 44 to 121 AST 18 U L 0 to 40 ALT 22 U L 0 to 32",
+    "char_start": 0,
+    "char_end": 878,
+    "n_tokens": 381,
+    "text_hash": "3e9a3e1ffe59b67671753db9e21edf35bcf4c79c"
+  },
+  {
+    "doc_id": "07",
+    "chunk_id": "de74c06812ffb990790a5033e9315c3293eeb64b",
+    "page": 4,
+    "text": "Endocrine and Vitamins Analyte Result Units Reference Range Flag TSH 2.10 uIU mL 0.40 to 4.50 Free T4 1.2 ng dL 0.8 to 1.8 Free T3 3.2 pg mL 2.3 to 4.2 HbA1c 5.4 % 4.0 to 5.6 Insulin Fasting 6.0 uIU mL 2.0 to 19.6 Vitamin D 25 OH 28 ng mL 30 to 100 Low Vitamin B12 480 pg mL 232 to 1245 Folate Serum 11.2 ng mL >= 4.0 Ferritin 45 ng mL 15 to 150 Iron Serum 92 ug dL 27 to 159 TIBC 330 ug dL 250 to 450 Transferrin Saturation 28 % 15 to 55 Note Vitamin D is below the optimal range. Consider sunlight exposure or supplementation per clinician guidance.",
+    "char_start": 0,
+    "char_end": 551,
+    "n_tokens": 216,
+    "text_hash": "d38317b40eb349ccaec3677a8f3c810f72ee1128"
+  },
+  {
+    "doc_id": "07",
+    "chunk_id": "d745e7750d73cb0bea7d57133f9c1ef7b9664a24",
+    "page": 5,
+    "text": "Urinalysis Parameter Result Units Reference Range Flag Appearance Clear Clear Color Yellow Yellow Specific Gravity 1.015 1.005 to 1.030 pH 6.0 5.0 to 8.0 Protein Negative Negative Glucose Negative Negative Ketones Negative Negative Bilirubin Negative Negative Urobilinogen Normal EU dL Normal Nitrite Negative Negative Leukocyte Esterase Negative Negative RBC Microscopy 0 to 2 HPF 0 to 2 WBC Microscopy 0 to 5 HPF 0 to 5 Epithelial Cells Few HPF Few Bacteria None seen HPF None seen",
+    "char_start": 0,
+    "char_end": 483,
+    "n_tokens": 131,
+    "text_hash": "4de46e86e341919437ecb4b76a18f50822b73e79"
+  }
+]
