@@ -1,7 +1,7 @@
 from neo4j import GraphDatabase
 from neo4j_graphrag.retrievers import Text2CypherRetriever
 from neo4j_graphrag.llm import OpenAILLM
-import argparse, os
+import argparse, os, re
 from collections import defaultdict
 
 
@@ -51,9 +51,9 @@ def text2cypher(input_query: str):
     """)
         rel_pattern = []
         for pattern in rel_pattern_results:
-            start = pattern["startLabels"][1] if pattern["startLabels"] else "?"
+            start = pattern["startLabels"][0] if pattern["startLabels"] else "?"
             rel = pattern["relType"]
-            end = pattern["endLabels"][1] if pattern["endLabels"] else "?"
+            end = pattern["endLabels"][0] if pattern["endLabels"] else "?"
             rel_pattern.append(f"(:{start})-[:{rel}]->(:{end})")
     lines = []
     lines.append("Node Properties: ")
@@ -76,7 +76,24 @@ def text2cypher(input_query: str):
 
     # (Optional) Provide user input/query pairs for the LLM to use as examples
     examples = [
-    "USER INPUT: 'What reduces LDL cholestrol?' QUERY: MATCH (p:DRUG)-[:LOWERS]->(m:BIOMARKER) WHERE m.name = 'Atarovastatin' RETURN p.name"
+     """USER INPUT: 'What causes Asthma attacks?'
+        QUERY:
+        MATCH (p:CLEANING_AGENT)-[:CAUSE]->(m:MEDICAL_EVENT)
+        WHERE toLower(m.name) CONTAINS 'asthma attacks'
+        RETURN p.name""",
+
+    """USER INPUT: 'Why is the flu vaccine important for people with asthma?'
+        QUERY:
+        MATCH (v:VACCINE {name: 'Flu vaccine'})
+        -[:PROTECTS_AGAINST]->(f:DISEASE {name: 'Flu'})
+        -[:MORE_SERIOUS_FOR]->(a:DISEASE {name: 'Asthma'})
+        RETURN v, f, a""",
+
+    """USER INPUT: 'Flu vaccine reduces risks of what diseases?'
+        QUERY:
+        MATCH (v:VACCINE {name: 'flu vaccine'})
+        MATCH (v)-[*1..5]->(m)-[:RISK_OF]->(d)
+        RETURN DISTINCT d.name"""
     ]
 
     # Initialize the retriever
@@ -88,12 +105,23 @@ def text2cypher(input_query: str):
     )
 
     output = retriever.search(input_query)
-    print(output)
-    cypher = output.metadata.get("cypher")
-    answer = output.items[0]
-    print(f"Cypher query of {input_query} is {output.metadata['cypher']}")
-    print(f"Output answer of input query {input_query} is {output.items[0]}")
+    cypher = output.metadata.get("cypher")   
+    print(cypher)
+    if len(output.items) == 0:
+        print(f'Graph retrieval did not return any answer')
+        return
+    val = []
+    for item in output.items:
+        match = re.search(r"'([^']+)'", item.content)
+        if match:
+            val.append(match.group(1))
     
+    answer = ",".join(val)
+        
+
+     
+    print(f'Output answer of input query "{input_query}" is {output.items[0]}')
+    print(f"Answer for query: {answer}")
 
 def main():
     ap = argparse.ArgumentParser()

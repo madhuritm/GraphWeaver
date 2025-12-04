@@ -22,18 +22,10 @@ def main():
     new_labels = workdir/"new_labels_added.json"
     triples=workdir/"triples.json"
 
-    run(["python", "scripts/pdf_parser.py", "--pdf", args.pdf, "--doc-id", str(args.doc_id), "--out", str(chunks), "--max-tokens", str(args.max_tokens)])
-    run(["python", "scripts/NER.py", "--chunks", str(chunks), "--out", str(ner), "--labels_registry", str(labels_registry), "--new_labels_out", str(new_labels)])
-    run(["python", "scripts/triples_gen.py", "--chunks", str(chunks), "--ner", str(ner), "--out", str(triples)])
-    run([
-        "python", "scripts/neo4j_ingestor.py",
-        "--uri", os.getenv("NEO4J_URI"),
-        "--user", os.getenv("NEO4J_USER"),
-        "--password", os.getenv("NEO4J_PASS"),
-        "--triples", str(triples),
-        "--maingraphnode", args.main_label,
-    ])
-    
+  #  run(["python", "graphIngestionPipeline/pdf_parser.py", "--pdf", args.pdf, "--doc-id", str(args.doc_id), "--out", str(chunks), "--max-tokens", str(args.max_tokens)])
+  # run(["python", "graphIngestionPipeline/NER.py", "--chunks", str(chunks), "--out", str(ner), "--labels_registry", str(labels_registry), "--new_labels_out", str(new_labels)])
+  #  run(["python", "graphIngestionPipeline/triples_gen.py", "--chunks", str(chunks), "--ner", str(ner), "--out", str(triples)])
+    run(["python", "graphIngestionPipeline/neo4j_ingestor.py",  "--triples", str(triples)])    
     
     print("done:", workdir)
 

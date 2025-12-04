@@ -19,7 +19,7 @@ def to_rel_type(pred: str) -> str:
     s = re.sub(r"_+", "_", s).strip("_")
     return s or "RELATED_TO"
 
-def run_ingest(uri: str, user: str, password: str, triples_path: str, maingraphnode: str, batch_size: int = 500):
+def run_ingest(uri: str, user: str, password: str, triples_path: str, batch_size: int = 500):
     driver = GraphDatabase.driver(uri, auth=(user, password))
     with driver, driver.session() as sess:
         with open(triples_path, "r", encoding="utf-8") as f:
@@ -48,7 +48,7 @@ def run_ingest(uri: str, user: str, password: str, triples_path: str, maingraphn
                 # MERGE subject
                 tx.run(
                     f"""
-                    MERGE (s:{maingraphnode}:{s_lab} {{id:$sid}})
+                    MERGE (s:{s_lab} {{id:$sid}})
                     ON CREATE SET s.text=$stxt,s.name=$stxt,s.label=$slab, s.createdAt=timestamp()
                     ON MATCH  SET s.text=$stxt, s.label=$slab
                     """,
@@ -58,7 +58,7 @@ def run_ingest(uri: str, user: str, password: str, triples_path: str, maingraphn
                 # MERGE object
                 tx.run(
                     f"""
-                    MERGE (o:{maingraphnode}:{o_lab} {{id:$oid}})
+                    MERGE (o:{o_lab} {{id:$oid}})
                     ON CREATE SET o.text=$otxt, o.name=$otxt, o.label=$olab, o.createdAt=timestamp()
                     ON MATCH  SET o.text=$otxt, o.label=$olab
                     """,
@@ -70,7 +70,7 @@ def run_ingest(uri: str, user: str, password: str, triples_path: str, maingraphn
                 # so we rely on pipeline dedupe + triple_id uniqueness in data.
                 tx.run(
                     f"""
-                    MATCH (s:{maingraphnode} {{id:$sid}}), (o:{maingraphnode} {{id:$oid}})
+                    MATCH (s:{s_lab} {{id:$sid}}), (o:{o_lab} {{id:$oid}})
                     MERGE (s)-[r:{rel_type} {{triple_id:$tid}}]->(o)
                     ON CREATE SET
                       r.doc_id=$doc_id,
@@ -105,15 +105,14 @@ def run_ingest(uri: str, user: str, password: str, triples_path: str, maingraphn
     print("Neo4j ingest complete.")
 
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--uri", required=True, help="neo4j+s://... (Aura) or bolt+s://...")
-    ap.add_argument("--user", required=True)
-    ap.add_argument("--password", required=True)
+    ap = argparse.ArgumentParser()    
     ap.add_argument("--triples", required=True, help="Path to triples.json")
-    ap.add_argument("--maingraphnode", required=True, help="Name of the main Graph node in neo4j")
     ap.add_argument("--batch", type=int, default=500)
     args = ap.parse_args()
-    run_ingest(args.uri, args.user, args.password, args.triples, args.maingraphnode, args.batch)
+    neo4j_URI = os.getenv("NEO4J_URI")
+    neo4j_PASS = os.getenv("NEO4J_PASS")
+    neo4j_USER = os.getenv("NEO4J_USER")
+    run_ingest(neo4j_URI, neo4j_USER, neo4j_PASS, args.triples, args.batch)
 
 if __name__ == "__main__":
     main()
